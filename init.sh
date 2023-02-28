@@ -63,17 +63,17 @@ mkdir -p \
 #    exit 1
 #fi
 
-if [[ $(getent group $PGID | cut -d: -f1) ]]; then
-    usermod -a -G "$PGID" steam
-else
-    groupmod -g "$PGID" steam
-fi
-
-if [[ $(getent passwd ${PUID} | cut -d: -f1) ]]; then
-    USER=$(getent passwd $PUID | cut -d: -f1)
-else
-    usermod -u "$PUID" steam
-fi
+#if [[ $(getent group $PGID | cut -d: -f1) ]]; then
+#    usermod -a -G "$PGID" steam
+#else
+#    groupmod -g "$PGID" steam
+#fi
+#
+#if [[ $(getent passwd ${PUID} | cut -d: -f1) ]]; then
+#    USER=$(getent passwd $PUID | cut -d: -f1)
+#else
+#    usermod -u "$PUID" steam
+#fi
 
 #chown -R "$PUID":"$PGID" /config /home/steam
 exec gosu "$USER" "/home/steam/run.sh" "$@"
