@@ -2,6 +2,9 @@
 
 set -e
 
+
+export PUID=$(id -u)
+export PGID=$(id -g)
 CURRENTUID=$(id -u)
 NUMCHECK='^[0-9]+$'
 RAMAVAILABLE=$(awk '/MemAvailable/ {printf( "%d\n", $2 / 1024000 )}' /proc/meminfo)
