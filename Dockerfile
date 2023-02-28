@@ -4,7 +4,7 @@ RUN set -x \
  && apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y gosu --no-install-recommends\
  && rm -rf /var/lib/apt/lists/* \
- #&& useradd -ms /bin/bash steam \
+ && useradd -ms /bin/bash steam \
  && gosu nobody true
 
 RUN mkdir -p /config \
