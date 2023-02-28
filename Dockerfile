@@ -4,14 +4,14 @@ RUN set -x \
  && apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y gosu --no-install-recommends\
  && rm -rf /var/lib/apt/lists/* \
- && useradd -ms /bin/bash steam \
+ #&& useradd -ms /bin/bash steam \
  && gosu nobody true
 
 RUN mkdir -p /config \
- && chown steam:steam /config
+ && chown 1001:root /config
 
 COPY init.sh /
-COPY --chown=steam:steam *.ini run.sh /home/steam/
+COPY --chown=1001:root *.ini run.sh /home/steam/
 
 WORKDIR /config
 
@@ -28,8 +28,8 @@ ENV AUTOPAUSE="true" \
     MAXPLAYERS="4" \
     MAXTICKRATE="120" \
     NETWORKQUALITY="3" \
-    PGID="1000" \
-    PUID="1000" \
+    #PGID="1000" \
+    #PUID="1000" \
     SERVERBEACONPORT="15000" \
     SERVERGAMEPORT="7777" \
     SERVERIP="0.0.0.0" \
